@@ -17,9 +17,9 @@ namespace _7_GuessingGameChallenge
         public static int GetRandomNumber()
         {
 
-            int randomNumber;
+            int randomNumberGenerated;
             Random Random = new Random();
-            return randomNumber = Random.Next(1, 101);
+            return randomNumberGenerated = Random.Next(0, 100);
             //throw new NotImplementedException();
         }
 
@@ -29,9 +29,10 @@ namespace _7_GuessingGameChallenge
         /// returns an int.
         /// </summary>
         /// <returns></returns>
-        /*public static int GetUsersGuess()
+        public static int GetUsersGuess()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace _7_GuessingGameChallenge
         /// <param name="randomNum"></param>
         /// <param name="guess"></param>
         /// <returns></returns>
-        public static int CompareNums(int randomNum, int guess)
+        /*public static int CompareNums(int randomNum, int guess)
         {
             throw new NotImplementedException();
         }
