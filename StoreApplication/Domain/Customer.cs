@@ -20,10 +20,10 @@ namespace StoreApplication
         public string customerPassword;
         
 
-        public int customerId { get; internal set; }
-        public string firstName { get; internal set; }
-        public string lastName { get; internal set; }
-        public string password { get; internal set; }
+        public int customerId { get;  set; }
+        public string firstName { get;  set; }
+        public string lastName { get;  set; }
+        public string password { get;  set; }
 
         //method to login and validate customerRegister with SqlDatabase 
         public int CustomerLogin(string username, string password)
