@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    
+    <style>    
+        body
+        {  
+            background-color: white; 
+        } 
+        h1
+        {
+            text-align: center;
+            color:black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #Intro 
+        { 
+            color: brown;    
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button
+        {
+            display: block;
+            width: fit-content;
+            background-color: green;
+            color: white;
+        }
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // create the title element for the list
+        let Title = document.createElement('h1');
+        //add the element to the body
+        document.body.appendChild(Title);
+        Title.innerText = `This is the SweetNSaltyJS Interactive.`;
+    </script>
+ 
+    <div id = "Intro">
+            In this interactive webpage, the user will input a starting number,press enter. Input a final number, press enter. 
+        The webpage will output the range of numbers starting from the starting # - final #. 
+        Please note that the starting# and final# must be at least 200 int apart and no more than 10,000 apart. 
+    </div>
+    <hr>
+    <script>
+        // create the submit element
+        let start = document.createElement('button');
+        //add the element to the body
+        document.body.appendChild(start);
+        start.innerText = 'Click to start!';
+
+        //create the eventlistener to do the things with the content of hte input box.
+        start.addEventListener('click', (e) => {
+            //write a method to clear everything and display a input box that prompts the user to input starting#.
+            let enterstartnumber = document.createElement('p');
+            enterstartnumber.innerText = 'Enter Starting number: ';
+            document.body.appendChild(enterstartnumber);
+            let inputElem = document.createElement('input');
+            document.body.appendChild(inputElem);
+            let inputElem2 = document.createElement('input');
+            let reset = document.createElement('button');
+            inputElem.addEventListener('keypress',(e)=>{
+               if(e.key=='Enter')
+                {
+                    var startingNumberValue = inputElem.value;
+                    let enterfinishingnumber = document.createElement('p');
+                    enterfinishingnumber.innerText = 'Enter finishing number: ';
+                    document.body.appendChild(enterfinishingnumber);
+                    //adds the input elem2 after displaying the startingnumber message
+                    document.body.appendChild(inputElem2);
+                    
+                }
+                inputElem2.addEventListener('keypress',(e)=>{
+                if(e.key=='Enter')
+                {
+                    //assign values of inputelem and inputelem2 to var
+                    //convert those var into int type
+                    var startingNumberValue = inputElem.value;
+                    parseInt(startingNumberValue);
+                    var finishingNumberValue = inputElem2.value;
+                    parseInt(finishingNumberValue);
+                    //if the finishing number is registered displays the reset button on the body of HTML
+                    document.body.appendChild(reset); 
+                    reset.innerText = 'Reset';
+                    //reloads the page--thanks to Dan the man!
+                    reset.addEventListener('click',(e)=>{
+                    location.reload();
+                    });
+                    
+                    //set up the for loop iterating over the two values(starting# & finishing number)
+                    let Sweet = 0; 
+                    let Salty = 0; 
+                    let sweetNSalty = 0; 
+                                                      
+                    var array = new Array();                           
+
+
+                    //Number startng at 1 and goes to 1000 by incrementing by single number.
+                    for (var i = startingNumberValue; i <= finishingNumberValue; i++)
+                    {
+                        //thanks to kevin lee and daniel
+                        if (finishingNumberValue-startingNumberValue <200 || finishingNumberValue-startingNumberValue >10000 ||finishingNumberValue < startingNumberValue){
+                            alert("Invalid input! Please follow the directions.");
+                        }
+                        //if multiple of both 3 and 5 returns SweetNSalty
+                        else if (i % 3 == 0 && i % 5 == 0)
+                        {
+                            //appends the string value and pushes it as the new value if the expression is true
+                            array.push("SweetNSalty" + " ");
+                            sweetNSalty++;
+                        }
+
+                        ///if multiple of 5 returns sweet and appens to the count
+                        else if (i % 5 == 0)
+                        {
+                            array.push("Salty, " + " ");
+                            Salty++;                   
+                        }
+
+                        //if multiple of 3 returns sweet and appens to the count
+                        else if (i % 3 == 0)
+                        {
+                            array.push("Sweet, " + " ");
+                            Sweet++;                  
+                        }
+
+                        //Any other numbers will count as numbers.
+                        else
+                        {
+                            array.push(i + " ");                    
+                        }
+
+                        //Every 40 numbers will seperate the group.
+                        if (i % 40 == 0)
+                        {
+                            //breaks the array if the expression is true and starts a new array
+                            console.log(array.toString());
+                            array = [];
+                        }
+                        //if statement for commas
+                        //if (i > 1000)
+                        //{                    
+                            //array.push(` ${i.toLocaleString()}` + " ") // Adds comma if number is greater than 1000
+                        //}
+                        
+                        
+                    } 
+                    //Count how many time were printed by each.
+                    console.log("Total number of times SweetNSalty was printed: " + sweetNSalty);
+                    console.log("Total number of times Salty was printed: " + Salty);
+                    console.log("Total number of times Sweet was printed: " + Sweet);
+                }
+
+            });
+        });
+              
+    });  
+         
+                            
+            
+           
+    </script>
+   
+    
+
+   
+    
+</body>
+</html>
